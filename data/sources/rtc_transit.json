@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "source": "Regional Transportation Commission of Southern Nevada (RTC); Las Vegas Monorail Company / LVCVA",
+  "rtc_url": "https://www.rtcsnv.com/",
+  "monorail_url": "https://www.lvmonorail.com/",
+  "license": "Public records; RTC publishes ridership in annual reports",
+  "notes": "Ridership figures are approximate. RTC publishes system-wide totals in annual reports but per-route breakdowns are not consistently available. Route-level estimates below are derived from: (1) RTC annual ridership reports, (2) Nevada Legislature transportation committee testimony, (3) Clark County Regional Transportation Plan documents. Figures marked 'estimated' use proportional allocation from system totals and service frequency data.",
+  "rtc_bus_routes": [
+    {
+      "route_id": "deuce",
+      "name": "The Deuce",
+      "description": "Las Vegas Blvd (Strip) — full length from Downtown Transportation Center to South Strip Transit Terminal",
+      "stops_served": [
+        "Downtown Transportation Center", "Fremont Street", "Stratosphere", "SLS/Sahara",
+        "Resorts World", "Convention Center", "Wynn/Encore", "Venetian", "Harrah's",
+        "Bally's/Paris", "Bellagio", "MGM Grand", "Luxor", "Mandalay Bay", "South Strip Transit Terminal"
+      ],
+      "venues_served": ["resorts_world_theatre", "venetian_expo", "encore_theater",
+                        "mgm_grand_garden_arena", "t_mobile_arena", "dolby_live_park_mgm",
+                        "mandalay_bay_events_center", "las_vegas_convention_center"],
+      "peak_frequency_minutes": 12,
+      "off_peak_frequency_minutes": 20,
+      "operating_hours": "24/7",
+      "average_daily_ridership": 22000,
+      "ridership_confidence": "medium",
+      "ridership_source": "Estimated from RTC FY2023 annual report system total (~57,000 daily systemwide); Deuce is consistently cited as highest-ridership fixed route, ~35-40% of Strip corridor ridership. Pre-COVID (FY2019) Deuce+SDX combined ~32,000 daily; post-COVID recovery estimated at ~65% of pre-COVID by 2023.",
+      "fare": 6.00,
+      "fare_type": "per_trip_all_day_pass",
+      "vehicle_type": "Double-decker bus (low floor)",
+      "capacity_per_vehicle": 97,
+      "event_day_notes": "Major events on The Strip cause severe overcrowding and frequency supplementation. RTC deploys additional buses for major stadium/arena events."
+    },
+    {
+      "route_id": "sdx",
+      "name": "SDX — Strip & Downtown Express",
+      "description": "Limited-stop express: South Strip Terminal → Downtown; fewer stops, faster than Deuce",
+      "venues_served": ["mgm_grand_garden_arena", "t_mobile_arena"],
+      "peak_frequency_minutes": 15,
+      "off_peak_frequency_minutes": 30,
+      "operating_hours": "08:00-02:00",
+      "average_daily_ridership": 6000,
+      "ridership_confidence": "low",
+      "ridership_source": "Estimated at ~25-28% of Deuce ridership based on service frequency ratio and stop density. RTC does not publish separate SDX ridership.",
+      "fare": 6.00,
+      "fare_type": "per_trip_all_day_pass",
+      "vehicle_type": "Articulated bus"
+    },
+    {
+      "route_id": "route_115",
+      "name": "Route 115 — Hacienda/Industrial",
+      "description": "Connects South Strip / Allegiant Stadium area to Downtown. Primary RTC service to Allegiant Stadium district.",
+      "venues_served": ["allegiant_stadium"],
+      "peak_frequency_minutes": 30,
+      "off_peak_frequency_minutes": 60,
+      "operating_hours": "05:30-23:30",
+      "average_daily_ridership": 3500,
+      "ridership_confidence": "low",
+      "ridership_source": "Estimated from RTC route ridership data presented in Clark County Regional Transportation Plan (2019). Post-Allegiant opening, ridership likely increased on event days. Baseline non-event daily ridership estimated at 3,000-4,000.",
+      "event_day_ridership_multiplier": 3.5,
+      "event_day_notes": "RTC supplements Route 115 with game-day express shuttle service on Raiders game days. Event express service (direct from Strip hotels) is operated separately under contract and not counted in regular ridership.",
+      "fare": 2.00,
+      "vehicle_type": "40-ft standard bus"
+    },
+    {
+      "route_id": "route_108",
+      "name": "Route 108 — Paradise Road",
+      "description": "Paradise Rd corridor — serves LVCC, University District, Virgin Hotels Las Vegas",
+      "venues_served": ["las_vegas_convention_center", "theater_at_virgin_hotels"],
+      "peak_frequency_minutes": 15,
+      "off_peak_frequency_minutes": 30,
+      "operating_hours": "05:00-01:00",
+      "average_daily_ridership": 7500,
+      "ridership_confidence": "low",
+      "ridership_source": "Estimated from RTC systemwide data; Paradise Rd is a major employment corridor. Convention week ridership significantly elevated.",
+      "fare": 2.00
+    },
+    {
+      "route_id": "route_201",
+      "name": "Route 201 — Tropicana Ave",
+      "description": "East-West: Tropicana Ave from Western Ave to Nellis Blvd; serves UNLV / Thomas & Mack, Orleans Arena",
+      "venues_served": ["thomas_mack_center", "orleans_arena"],
+      "peak_frequency_minutes": 15,
+      "off_peak_frequency_minutes": 30,
+      "operating_hours": "05:00-01:30",
+      "average_daily_ridership": 8000,
+      "ridership_confidence": "low",
+      "ridership_source": "Estimated from RTC data; Tropicana is a major east-west corridor and one of RTC's highest-ridership non-Strip routes.",
+      "fare": 2.00
+    }
+  ],
+  "las_vegas_monorail": {
+    "operator_history": "Las Vegas Monorail Company (private, 2004-2020) → filed bankruptcy January 2020 → acquired by LVCVA July 2020 → resumed limited service October 2021",
+    "current_operator": "Las Vegas Convention & Visitors Authority (LVCVA)",
+    "stations": [
+      {"id": "mgm_grand",         "name": "MGM Grand",                    "lat": 36.1022, "lon": -115.1697, "venues_nearby": ["mgm_grand_garden_arena", "t_mobile_arena"]},
+      {"id": "bally_paris",       "name": "Bally's/Paris Las Vegas",      "lat": 36.1117, "lon": -115.1700, "venues_nearby": ["caesars_palace_colosseum"]},
+      {"id": "flamingo_caesars",  "name": "Flamingo/Caesars Palace",      "lat": 36.1162, "lon": -115.1685, "venues_nearby": ["caesars_palace_colosseum"]},
+      {"id": "harrahs_imperial",  "name": "Harrah's/The LINQ",            "lat": 36.1214, "lon": -115.1673, "venues_nearby": []},
+      {"id": "convention_center", "name": "Las Vegas Convention Center",   "lat": 36.1297, "lon": -115.1628, "venues_nearby": ["las_vegas_convention_center", "sphere_las_vegas", "venetian_expo"]},
+      {"id": "westgate",          "name": "Westgate Las Vegas",            "lat": 36.1351, "lon": -115.1544, "venues_nearby": ["las_vegas_convention_center"]},
+      {"id": "sls_sahara",        "name": "SLS Las Vegas (Sahara)",       "lat": 36.1414, "lon": -115.1571, "venues_nearby": ["resorts_world_theatre"]}
+    ],
+    "total_length_miles": 3.9,
+    "ridership": {
+      "pre_covid_daily_avg_2019": 15800,
+      "post_covid_daily_avg_2023": 7500,
+      "confidence": "medium",
+      "source": "Las Vegas Monorail Company annual reports (pre-2020); LVCVA post-acquisition operational updates. 2019 figure from Monorail Company FY2019 report. 2023 figure estimated from partial LVCVA reporting and Las Vegas Review-Journal coverage of post-bankruptcy operations."
+    },
+    "operating_hours": "07:00-02:00 Mon-Thu; 07:00-03:00 Fri-Sun (extended on major event weekends)",
+    "peak_frequency_minutes": 4,
+    "off_peak_frequency_minutes": 8,
+    "fare": 5.00,
+    "coverage_gap": "Monorail runs parallel to but EAST of The Strip — hotels on the west side of the Strip (Caesars, Bellagio, Mirage, Wynn) require a cross-Strip walk. Does not serve Allegiant Stadium, Mandalay Bay, Sphere Las Vegas directly.",
+    "operational_status_note": "As of April 2026, the monorail is operational under LVCVA management. It was closed during COVID (2020-2021) and underwent infrastructure maintenance during the transition period."
+  }
+}

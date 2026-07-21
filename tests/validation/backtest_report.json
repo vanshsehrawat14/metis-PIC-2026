@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "description": "Vane queueing network back-test against documented LV events",
+    "model_version": "network_v1",
+    "model_confidence": "LOW-MEDIUM",
+    "run_note": "Predicted values from theory-grounded queueing network. Documented values from public sources (after-action reports, media, CTA). No instrument-measured queue data from any LV venue."
+  },
+  "events": [
+    {
+      "event_name": "Super Bowl LVIII",
+      "venue_id": "allegiant_stadium",
+      "venue_name": "Allegiant Stadium",
+      "attendance": 61629,
+      "venue_capacity": 72000,
+      "fill_pct": 85.6,
+      "event_type": "nfl",
+      "event_date": "2024-02-11",
+      "simulation_inputs": {
+        "weather_factor": 0.15,
+        "transit_factor": 0.4,
+        "event_duration_hours": 4.5,
+        "arrival_window_hours": 3.0,
+        "n_mc_trials": 1000
+      },
+      "primary_method": "steady-state MC (operational rates)",
+      "predicted_temporal_arrival_mean": 92.7,
+      "predicted_temporal_peak_wait": 109.09,
+      "predicted_mean_wait_mc": 46.38,
+      "predicted_wait_p10": 24.77,
+      "predicted_wait_p90": 67.22,
+      "mc_wait_p10": 24.77,
+      "mc_wait_p90": 67.22,
+      "predicted_peak_congestion_time": "T-82min (arrival phase)",
+      "predicted_egress_time": 150.0,
+      "predicted_hes": 60.9,
+      "predicted_srs": "MODERATE",
+      "predicted_bottleneck": "gate_7",
+      "predicted_bottleneck_frequency_pct": 13.5,
+      "predicted_fruin_worst": "A",
+      "documented_wait_range": [
+        30,
+        45
+      ],
+      "documented_egress_range": [
+        35,
+        45
+      ],
+      "documented_source": "LVMPD After-Action Report; NFL Operations Report; Las Vegas Review-Journal; ESPN coverage 2024-02-11",
+      "documented_issues": "Significant congestion at south gates; VIP entry delays; some attendees queued 45+ minutes at secondary screening checkpoints.",
+      "documented_notes": "Enhanced Super Bowl-level security (far more rigorous than standard NFL). ~115,000 additional people in surrounding corridor (non-ticket holders). Clear weather; no weather-driven service degradation.",
+      "within_predicted_range": true,
+      "comparison_notes": "[steady-state MC (operational rates)] Predicted P10-P90 interval overlaps the documented range. Known modeling gaps: Super Bowl security protocol is ~2\u00d7 more thorough than standard NFL \u2014 model uses standard NFL service rates (under-predicts wait). | Surrounding 115k non-ticket crowd compresses vehicle/pedestrian access to gates \u2014 not modeled; likely explains longer tail in real waits. | VIP/club entry is parallel fast lane \u2014 keeps average down vs. general admission.",
+      "model_accuracy_assessment": "Strong match",
+      "known_modeling_gaps": [
+        "Super Bowl security protocol is ~2\u00d7 more thorough than standard NFL \u2014 model uses standard NFL service rates (under-predicts wait).",
+        "Surrounding 115k non-ticket crowd compresses vehicle/pedestrian access to gates \u2014 not modeled; likely explains longer tail in real waits.",
+        "VIP/club entry is parallel fast lane \u2014 keeps average down vs. general admission."
+      ],
+      "computation_ms": {
+        "monte_carlo": 4551.0,
+        "temporal": 974.0
+      },
+      "full_metrics_summary": {
+        "operational": {
+          "wait_time": {
+            "mean": 46.383875835723494,
+            "p10": 24.765438421388033,
+            "p90": 67.21905982582999,
+            "unit": "minutes"
+          },
+          "congestion": {
+            "mean": 0.5157083333333333,
+            "p10": 0.4166666666666667,
+            "p90": 0.625,
+            "unit": "fraction"
+          },
+          "utilization": {
+            "mean": 0.8059835973754975,
+            "unit": "fraction"
+          },
+          "bottleneck": {
+            "node": "gate_7",
+            "utilization": 1.0191581056306205,
+            "frequency": 0.135
+          },
+          "throughput": {
+            "venue_total": 18136.300129425428,
+            "unit": "persons/hour"
+          }
+        },
+        "safety_level": "MODERATE",
+        "hes": 60.93878199581829,
+        "fruin_worst": "A",
+        "top_recommendations": [
+          "Add 1 lanes at gate 5 to bring modeled utilization toward 82%.",
+          "Reduce average wait time (currently 46 min) to improve experience."
+        ]
+      }
+    },
+    {
+      "event_name": "UFC 306 at The Sphere",
+      "venue_id": "sphere_las_vegas",
+      "venue_name": "Sphere Las Vegas",
+      "attendance": 18506,
+      "venue_capacity": 20000,
+      "fill_pct": 92.5,
+      "event_type": "boxing_mma",
+      "event_date": "2024-09-14",
+      "simulation_inputs": {
+        "weather_factor": 0.65,
+        "transit_factor": 0.5,
+        "event_duration_hours": 5.0,
+        "arrival_window_hours": 2.0,
+        "n_mc_trials": 1000
+      },
+      "primary_method": "steady-state MC (operational rates)",
+      "predicted_temporal_arrival_mean": 92.2,
+      "predicted_temporal_peak_wait": 120.0,
+      "predicted_mean_wait_mc": 36.39,
+      "predicted_wait_p10": 12.99,
+      "predicted_wait_p90": 64.08,
+      "mc_wait_p10": 12.99,
+      "mc_wait_p90": 64.08,
+      "predicted_peak_congestion_time": "T-34min (arrival phase)",
+      "predicted_egress_time": 120.0,
+      "predicted_hes": 53.9,
+      "predicted_srs": "LOW",
+      "predicted_bottleneck": "security_2",
+      "predicted_bottleneck_frequency_pct": 20.7,
+      "predicted_fruin_worst": "A",
+      "documented_wait_range": [
+        15,
+        25
+      ],
+      "documented_egress_range": [
+        null,
+        null
+      ],
+      "documented_source": "ESPN; MMA Fighting; MMA media pool; attendee social media reports; Sphere venue operational commentary (inaugural event)",
+      "documented_issues": "Some confusion with new venue navigation and entry flow; but operations generally praised as efficient for inaugural event. Heat was a significant attendee concern during exterior queuing.",
+      "documented_notes": "First major sporting event at The Sphere (opened Sept 2023). Capacity 18,600 \u2014 near-full house. Enhanced security for inaugural event. Venetian/Palazzo area infrastructure supported access. Unique circular entry geometry not fully captured in model topology.",
+      "within_predicted_range": true,
+      "comparison_notes": "[steady-state MC (operational rates)] Predicted P10-P90 interval overlaps the documented range. Known modeling gaps: Sphere gate count is low-confidence estimate (not publicly documented). Model may over- or under-estimate entry throughput. | Unique circular entry geometry and Venetian casino integration differ from standard arena topology in model. | Inaugural event: staff learning curve not modeled (adds variance). | Heat stress (100\u00b0F) degrades outdoor queuing comfort \u2014 weather_factor=0.65 captures service degradation but not attendee patience/behavior change.",
+      "model_accuracy_assessment": "Reasonable",
+      "known_modeling_gaps": [
+        "Sphere gate count is low-confidence estimate (not publicly documented). Model may over- or under-estimate entry throughput.",
+        "Unique circular entry geometry and Venetian casino integration differ from standard arena topology in model.",
+        "Inaugural event: staff learning curve not modeled (adds variance).",
+        "Heat stress (100\u00b0F) degrades outdoor queuing comfort \u2014 weather_factor=0.65 captures service degradation but not attendee patience/behavior change."
+      ],
+      "computation_ms": {
+        "monte_carlo": 2477.0,
+        "temporal": 406.0
+      },
+      "full_metrics_summary": {
+        "operational": {
+          "wait_time": {
+            "mean": 36.387764866591986,
+            "p10": 12.98552597157998,
+            "p90": 64.07766872925507,
+            "unit": "minutes"
+          },
+          "congestion": {
+            "mean": 0.37344444444444447,
+            "p10": 0.1111111111111111,
+            "p90": 0.6111111111111112,
+            "unit": "fraction"
+          },
+          "utilization": {
+            "mean": 0.7999929171447216,
+            "unit": "fraction"
+          },
+          "bottleneck": {
+            "node": "security_2",
+            "utilization": 0.9702922783601233,
+            "frequency": 0.207
+          },
+          "throughput": {
+            "venue_total": 7801.974725294744,
+            "unit": "persons/hour"
+          }
+        },
+        "safety_level": "LOW",
+        "hes": 53.93984103423571,
+        "fruin_worst": "A",
+        "top_recommendations": [
+          "Add 4 lanes at security 3 to bring modeled utilization toward 82%.",
+          "Concession operations are efficient. No action needed.",
+          "Reduce average wait time (currently 36 min) to improve experience."
+        ]
+      }
+    },
+    {
+      "event_name": "CES 2024 (Peak Day)",
+      "venue_id": "las_vegas_convention_center",
+      "venue_name": "Las Vegas Convention Center",
+      "attendance": 40000,
+      "venue_capacity": 150000,
+      "fill_pct": 26.7,
+      "event_type": "convention",
+      "event_date": "2024-01-10",
+      "simulation_inputs": {
+        "weather_factor": 0.1,
+        "transit_factor": 0.45,
+        "event_duration_hours": 8.0,
+        "arrival_window_hours": 3.0,
+        "n_mc_trials": 1000
+      },
+      "primary_method": "steady-state MC (operational rates)",
+      "predicted_temporal_arrival_mean": 0.0,
+      "predicted_temporal_peak_wait": 0.0,
+      "predicted_mean_wait_mc": 0.0,
+      "predicted_wait_p10": 0.0,
+      "predicted_wait_p90": 0.0,
+      "mc_wait_p10": 0.0,
+      "mc_wait_p90": 0.0,
+      "predicted_peak_congestion_time": "T-108min (arrival phase)",
+      "predicted_egress_time": 200.0,
+      "predicted_hes": 93.1,
+      "predicted_srs": "LOW",
+      "predicted_bottleneck": "gate_9",
+      "predicted_bottleneck_frequency_pct": 6.7,
+      "predicted_fruin_worst": "A",
+      "documented_wait_range": [
+        10,
+        20
+      ],
+      "documented_egress_range": [
+        null,
+        null
+      ],
+      "documented_source": "Consumer Technology Association (CTA) official reports; LVCVA attendance data; Las Vegas Review-Journal CES 2024 coverage",
+      "documented_issues": "West Hall to North Hall transit congestion; food court overcrowding at lunch; registration surge at 9\u201310 AM.",
+      "documented_notes": "Convention pattern: morning surge at registration, sustained lunch-hour congestion at concessions/food, gradual afternoon taper. Registration desks are the primary bottleneck. LVCC has ~200 entry points across multiple halls \u2014 model topology aggregates these into gate nodes.",
+      "within_predicted_range": false,
+      "comparison_notes": "[steady-state MC (operational rates)] Model UNDER-PREDICTS by 10.0-20.0 min. Known modeling gaps: Convention registration desks function differently from stadium gates \u2014 badge scanning/printing adds service time not in standard 'ticketing' rates. | LVCC has 200+ entry points across West/Central/North halls; model aggregates into a single gate/security topology. | Convention attendees self-select arrival times heavily; Beta-distribution arrival curve may not capture the registration surge shape. | Lunch-hour concession surge is a distinct second peak not in arrival model.",
+      "model_accuracy_assessment": "Poor match",
+      "known_modeling_gaps": [
+        "Convention registration desks function differently from stadium gates \u2014 badge scanning/printing adds service time not in standard 'ticketing' rates.",
+        "LVCC has 200+ entry points across West/Central/North halls; model aggregates into a single gate/security topology.",
+        "Convention attendees self-select arrival times heavily; Beta-distribution arrival curve may not capture the registration surge shape.",
+        "Lunch-hour concession surge is a distinct second peak not in arrival model."
+      ],
+      "computation_ms": {
+        "monte_carlo": 8090.0,
+        "temporal": 2330.0
+      },
+      "full_metrics_summary": {
+        "operational": {
+          "wait_time": {
+            "mean": 0.0009428173270919241,
+            "p10": 0.0008634231826743646,
+            "p90": 0.0010228573705511283,
+            "unit": "minutes"
+          },
+          "congestion": {
+            "mean": 0.0,
+            "p10": 0.0,
+            "p90": 0.0,
+            "unit": "fraction"
+          },
+          "utilization": {
+            "mean": 0.16641612465175734,
+            "unit": "fraction"
+          },
+          "bottleneck": {
+            "node": "gate_9",
+            "utilization": 0.26193186911726946,
+            "frequency": 0.067
+          },
+          "throughput": {
+            "venue_total": 12476.828872625741,
+            "unit": "persons/hour"
+          }
+        },
+        "safety_level": "LOW",
+        "hes": 93.08401986763137,
+        "fruin_worst": "A",
+        "top_recommendations": []
+      }
+    }
+  ],
+  "summary": {
+    "n_events": 3,
+    "accuracy_counts": {
+      "Strong match": 1,
+      "Reasonable": 1,
+      "Poor match": 1,
+      "Insufficient data": 0
+    }
+  }
+}

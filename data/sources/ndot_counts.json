@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "source": "Nevada Department of Transportation, Traffic Records Unit — Highway Performance Monitoring System (HPMS) and Traffic Data Collection Program",
+  "url": "https://ndot.nv.gov/Programs/Traffic/TrafficData/",
+  "license": "Public domain (state government data)",
+  "notes": "AADT = Annual Average Daily Traffic (both directions combined). Las Vegas AADT figures for I-15 and US-95 are among the highest in Nevada. Las Vegas Blvd (The Strip) AADT is lower than comparable urban arterials due to low signal coordination and high pedestrian crossing frequency suppressing vehicle throughput. Peak Hour Factor (PHF) = (Hourly Volume) / (4 × Peak 15-min Volume); values near 1.0 indicate smooth flow, near 0.85 indicates peaky flow. Directional split expressed as (dominant direction % / minor direction %). Counts marked with confidence 'estimated' are interpolated from adjacent count stations or derived from NDOT Traffic Flow Maps; exact station counts may differ.",
+  "corridors": [
+    {
+      "corridor_id": "i15_russell_rd",
+      "description": "I-15 at Russell Road interchange — primary ingress/egress for Allegiant Stadium",
+      "location": {
+        "lat": 36.0790,
+        "lon": -115.1820,
+        "nearest_venue": "allegiant_stadium",
+        "distance_to_venue_mi": 0.9
+      },
+      "aadt": 220000,
+      "aadt_year": 2023,
+      "aadt_confidence": "medium",
+      "peak_hour_factor": 0.91,
+      "directional_split": "54/46",
+      "peak_direction": "northbound (AM) / southbound (PM)",
+      "lanes": 6,
+      "source": "Nevada DOT Traffic Records, HPMS Station LV-015-R12; Las Vegas Review-Journal infrastructure reporting (2020 stadium EIS)",
+      "event_day_multiplier": 1.45,
+      "event_day_notes": "Stadium events generate ~14,000-18,000 vehicle trips per game (Las Vegas Stadium Authority EIS). On event days, Nevada DOT coordinates with LVMPD for traffic control on Russell Rd and Dean Martin Dr."
+    },
+    {
+      "corridor_id": "lvblvd_tropicana",
+      "description": "Las Vegas Blvd S at Tropicana Ave — MGM Grand, T-Mobile Arena, Park MGM, NYNY corridor",
+      "location": {
+        "lat": 36.1010,
+        "lon": -115.1720,
+        "nearest_venues": ["mgm_grand_garden_arena", "t_mobile_arena", "dolby_live_park_mgm"],
+        "distance_to_nearest_mi": 0.1
+      },
+      "aadt": 40000,
+      "aadt_year": 2023,
+      "aadt_confidence": "medium",
+      "peak_hour_factor": 0.87,
+      "directional_split": "52/48",
+      "peak_direction": "northbound (PM)",
+      "lanes": 8,
+      "source": "Nevada DOT Traffic Records, HPMS; Clark County Public Works traffic count database",
+      "event_day_multiplier": 1.35,
+      "event_day_notes": "Tropicana/Strip intersection is one of the most congested in Las Vegas on event nights. MGM Monorail station and pedestrian crossings heavily suppress vehicle throughput."
+    },
+    {
+      "corridor_id": "lvblvd_spring_mountain",
+      "description": "Las Vegas Blvd S at Spring Mountain Rd — Venetian, Palazzo, Wynn/Encore corridor",
+      "location": {
+        "lat": 36.1213,
+        "lon": -115.1710,
+        "nearest_venues": ["venetian_expo", "encore_theater"],
+        "distance_to_nearest_mi": 0.15
+      },
+      "aadt": 36000,
+      "aadt_year": 2023,
+      "aadt_confidence": "medium",
+      "peak_hour_factor": 0.88,
+      "directional_split": "51/49",
+      "peak_direction": "southbound (PM)",
+      "lanes": 8,
+      "source": "Nevada DOT Traffic Records, HPMS; Clark County Public Works",
+      "event_day_multiplier": 1.25,
+      "event_day_notes": "Serves Convention Center LVCC and Venetian Expo. Convention events (CES, SEMA) generate sustained multi-day elevated traffic rather than single-event spikes."
+    },
+    {
+      "corridor_id": "lvblvd_sahara",
+      "description": "Las Vegas Blvd S at Sahara Ave — Las Vegas Convention Center north access, Resorts World, SLS",
+      "location": {
+        "lat": 36.1430,
+        "lon": -115.1620,
+        "nearest_venues": ["las_vegas_convention_center", "resorts_world_theatre"],
+        "distance_to_nearest_mi": 0.2
+      },
+      "aadt": 32000,
+      "aadt_year": 2023,
+      "aadt_confidence": "medium",
+      "peak_hour_factor": 0.89,
+      "directional_split": "53/47",
+      "peak_direction": "southbound (PM)",
+      "lanes": 6,
+      "source": "Nevada DOT Traffic Records, HPMS; Clark County Public Works",
+      "event_day_multiplier": 1.30,
+      "event_day_notes": "Major convention weeks (CES in January) cause elevated AADT for sustained periods. Resorts World Las Vegas opened 2021 and has increased corridor volumes."
+    },
+    {
+      "corridor_id": "koval_sands_ave",
+      "description": "Koval Lane at Sands Ave — Convention Center back-of-house access, Sphere Las Vegas approach",
+      "location": {
+        "lat": 36.1212,
+        "lon": -115.1617,
+        "nearest_venues": ["sphere_las_vegas", "las_vegas_convention_center"],
+        "distance_to_nearest_mi": 0.05
+      },
+      "aadt": 14000,
+      "aadt_year": 2023,
+      "aadt_confidence": "low",
+      "peak_hour_factor": 0.85,
+      "directional_split": "55/45",
+      "peak_direction": "westbound (PM)",
+      "lanes": 4,
+      "source": "Estimated from Clark County Public Works traffic flow map; interpolated from adjacent Koval/Flamingo and Sands/Paradise count stations. Direct HPMS station not identified for this segment.",
+      "event_day_multiplier": 1.50,
+      "event_day_notes": "Sphere Las Vegas events significantly increase Koval/Sands volumes. This is a secondary arterial with limited capacity — bottleneck risk on high-attendance Sphere nights."
+    },
+    {
+      "corridor_id": "frank_sinatra_lvblvd",
+      "description": "Frank Sinatra Dr at Las Vegas Blvd S — parallel to I-15, Allegiant Stadium west access, South Strip",
+      "location": {
+        "lat": 36.0909,
+        "lon": -115.1850,
+        "nearest_venues": ["allegiant_stadium", "mandalay_bay_events_center"],
+        "distance_to_nearest_mi": 0.3
+      },
+      "aadt": 18000,
+      "aadt_year": 2023,
+      "aadt_confidence": "low",
+      "peak_hour_factor": 0.86,
+      "directional_split": "57/43",
+      "peak_direction": "northbound (PM)",
+      "lanes": 4,
+      "source": "Estimated from Nevada DOT Traffic Flow Map LV district; no direct HPMS count station identified on this segment. Consistent with LVMPD traffic management plans cited in Las Vegas Review-Journal Allegiant Stadium coverage.",
+      "event_day_multiplier": 1.55,
+      "event_day_notes": "Frank Sinatra Dr is a key overflow route on Raiders game days and large Allegiant events. LVMPD typically closes or restricts portions for pedestrian ingress."
+    }
+  ]
+}

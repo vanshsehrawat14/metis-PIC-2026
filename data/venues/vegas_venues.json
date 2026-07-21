@@ -1,0 +1,662 @@
+{
+  "schema_version": "1.0",
+  "generated": "2026-04-10",
+  "source_note": "Capacity figures sourced from official authority records and widely-reported public figures. Infrastructure details (gates, security lanes, concessions) are estimated from public reporting and comparable-venue analysis unless otherwise noted. Confidence levels — high: official authority/permit records; medium: press releases, widely-reported public figures, venue official pages; low: estimated from comparable venues or derived from site footprint.",
+  "data_quality_notes": [
+    "app.py VEGAS_VENUES lists 'Mandalay Bay Events Center' and 'Michelob Ultra Arena' as separate entries. They are the same physical venue (renamed March 2022). The Michelob Ultra Arena entry in app.py has an inflated capacity (20,000 vs actual ~12,000) and coordinates that are ~1.4 km north of the actual location. This is flagged per venue below.",
+    "app.py 'Resorts World Amphitheatre' (outdoor_factor: 0.90) likely conflates the indoor Resorts World Theatre (5,000 seats) with the adjacent outdoor areas. Flagged below.",
+    "app.py uses 'MSG Sphere' as the venue name; the venue's official name is 'Sphere Las Vegas' (MSG Entertainment is the operator)."
+  ],
+  "venues": [
+    {
+      "venue_id": "allegiant_stadium",
+      "name": "Allegiant Stadium",
+      "in_app_py": true,
+      "capacity": {
+        "max": 72000,
+        "football": 65000,
+        "concert_with_floor": 72000,
+        "app_py_value": 65000,
+        "source": "Las Vegas Stadium Authority public records; Nevada Legislature approval documents (AB 1, 30th Special Session 2016)",
+        "confidence": "high",
+        "notes": "65,000 is the standard NFL configuration per Las Vegas Stadium Authority. Concert capacity of ~72,000 includes field/floor seating. app.py uses 65,000 as max_cap — that is the NFL figure, not the absolute maximum."
+      },
+      "infrastructure": {
+        "gates": {
+          "count": 8,
+          "locations": ["north_1", "north_2", "east_1", "east_2", "south_1", "south_2", "west_1", "west_2"],
+          "source": "Clark County Commission approval documents; stadium opening operational reporting (Las Vegas Review-Journal, 2020)",
+          "confidence": "medium",
+          "notes": "8 entry gates referenced in stadium planning and opening-day operational coverage. Security lane count per gate is estimated from comparable NFL stadiums (SoFi Stadium, US Bank Stadium) and not from verified Allegiant building plans."
+        },
+        "security_lanes_per_gate": {"estimate": "6-8", "confidence": "low"},
+        "concession_stands": {
+          "estimate": 48,
+          "confidence": "low",
+          "notes": "Estimated from ASM Global operational reports for comparable-capacity NFL stadiums. Allegiant has not published a specific count publicly."
+        },
+        "restroom_facilities": {"estimate": 32, "confidence": "low"},
+        "exit_gates": {"estimate": 12, "confidence": "low"},
+        "parking_capacity": {
+          "value": 22000,
+          "confidence": "medium",
+          "source": "Las Vegas Stadium Authority Environmental Impact Statement / EIR documents",
+          "notes": "Includes stadium-district controlled lots and surrounding structured parking. No surface parking at stadium footprint itself — guests use surrounding Hacienda Ave district garages and lots."
+        }
+      },
+      "location": {
+        "lat": 36.0909,
+        "lon": -115.1833,
+        "address": "3333 Al Davis Way, Las Vegas, NV 89118",
+        "corridor": "I-15 / Russell Road interchange",
+        "transit_access": ["RTC Route 115", "Event Express shuttles from Strip hotels (game/event days)"]
+      },
+      "event_types": ["nfl", "soccer", "concert", "boxing", "special_event"],
+      "operator": "ASM Global on behalf of Las Vegas Stadium Authority; Raiders as anchor tenant",
+      "opened": 2020
+    },
+    {
+      "venue_id": "t_mobile_arena",
+      "name": "T-Mobile Arena",
+      "in_app_py": true,
+      "capacity": {
+        "max": 20000,
+        "hockey_nhl": 17500,
+        "basketball": 18500,
+        "concert": 20000,
+        "app_py_value": 20000,
+        "source": "AEG / T-Mobile Arena official specifications; NHL Golden Knights arena documentation filed with NHL",
+        "confidence": "high",
+        "notes": "17,500 is the NHL Golden Knights configuration per publicly filed arena specs. Concert maximum of ~20,000 includes floor standing. app.py value of 20,000 reflects concert max and is accurate."
+      },
+      "infrastructure": {
+        "gates": {
+          "count": 4,
+          "confidence": "medium",
+          "source": "T-Mobile Arena event guide maps; AEG venue documentation",
+          "notes": "Four primary entry gates (north, south, east, west facing The Park) per venue maps published in event guides. Security lanes per gate estimated."
+        },
+        "security_lanes_per_gate": {"estimate": "5-7", "confidence": "low"},
+        "concession_stands": {"estimate": 20, "confidence": "low"},
+        "exit_gates": {"estimate": 6, "confidence": "low"},
+        "parking_capacity": {
+          "value": null,
+          "confidence": "n/a",
+          "notes": "No dedicated on-site parking. Guests use adjacent Park MGM garage, CityCenter structures, NYNY/Excalibur, and Strip hotel parking. Monorail access via MGM Grand station (short walk)."
+        }
+      },
+      "location": {
+        "lat": 36.1028,
+        "lon": -115.1781,
+        "address": "3780 S Las Vegas Blvd, Las Vegas, NV 89158",
+        "corridor": "Park MGM / New York-New York Strip block, 'The Park' entertainment district",
+        "transit_access": ["Deuce on the Strip", "Las Vegas Monorail (MGM Grand station, ~5-min walk)", "Strip walking access"]
+      },
+      "event_types": ["nhl", "concert", "boxing", "mma", "basketball", "wrestling", "special_event"],
+      "operator": "AEG / MGM Resorts International (co-owned)",
+      "opened": 2016
+    },
+    {
+      "venue_id": "sphere_las_vegas",
+      "name": "Sphere Las Vegas",
+      "alternate_names": ["MSG Sphere", "The Sphere"],
+      "in_app_py": true,
+      "app_py_name": "MSG Sphere",
+      "capacity": {
+        "max": 20000,
+        "seated_concert": 17600,
+        "standing": 20000,
+        "app_py_value": 20000,
+        "source": "MSG Entertainment investor presentations (Q1 2023); Sphere Las Vegas official launch documentation; Nevada gaming/entertainment license filings",
+        "confidence": "high",
+        "notes": "17,600 is the seated concert configuration per MSG Entertainment investor materials. Standing/festival capacity approaches 20,000. app.py value of 20,000 reflects the standing maximum. Official venue name is 'Sphere Las Vegas' — 'MSG Sphere' is an informal name referencing the operator (MSG Entertainment / Sphere Entertainment Co)."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "4-6",
+          "confidence": "low",
+          "source": "Estimated from venue footprint and publicly available event entry guides (U2 Achtung Baby residency 2023)",
+          "notes": "Exact gate configuration not publicly documented in Clark County building permits as of April 2026. Estimate based on operational footprint and integration with Venetian/Palazzo access corridors."
+        },
+        "security_lanes_per_gate": {"estimate": "4-6", "confidence": "low"},
+        "unique_features": "Fully immersive 160,000 sq ft interior LED screen (highest resolution in the world as of 2024); Exosphere exterior LED display",
+        "parking_capacity": {
+          "value": null,
+          "confidence": "n/a",
+          "notes": "No dedicated Sphere parking. Uses Venetian/Palazzo parking structure (~8,000 spaces) and shared Strip parking."
+        }
+      },
+      "location": {
+        "lat": 36.1212,
+        "lon": -115.1617,
+        "address": "255 Sands Ave, Las Vegas, NV 89169",
+        "corridor": "Sands Ave east of Strip, adjacent to Venetian/Palazzo",
+        "transit_access": ["Deuce on the Strip (Venetian/Palazzo stop)", "Las Vegas Monorail (Convention Center station, ~8-min walk)"]
+      },
+      "event_types": ["concert", "immersive_experience", "corporate_event", "residency", "special_event"],
+      "operator": "Sphere Entertainment Co. (MSG Entertainment subsidiary)",
+      "opened": 2023
+    },
+    {
+      "venue_id": "las_vegas_convention_center",
+      "name": "Las Vegas Convention Center",
+      "in_app_py": true,
+      "capacity": {
+        "max": 150000,
+        "exhibit_floor_sqft": 4600000,
+        "configuration_note": "Capacity is event-dependent; 150,000 reflects peak single-day attendance at CES — not a fixed-seat building code capacity",
+        "app_py_value": 150000,
+        "source": "LVCVA (Las Vegas Convention & Visitors Authority) official facility specifications; West Hall expansion documentation (2021)",
+        "confidence": "medium",
+        "notes": "Not a fixed-seat venue. Exhibit floor totals 4.6 million sq ft per LVCVA fact sheet (post-2021 West Hall expansion). 150,000 is a widely-reported CES daily attendance figure, not a building occupancy limit. Actual event capacity varies dramatically by layout."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": 20,
+          "confidence": "low",
+          "source": "Estimated from LVCC hall structure: West Hall (2021 expansion), Central Hall, South Hall, and North Hall each have multiple badge scan entry lanes. 20 represents distributed access points across all halls, consistent with CES 2024 operational reports.",
+          "notes": "Convention centers use distributed badge scanning entry, not stadium-style gated entry. LVCC has ~200 individual badge scan lanes across the full facility. Modeled as 20 gate nodes x 4-6 lanes each for tractable simulation. Service rates use ticketing_rfid_nfc (badge scanning), not security_magnetometer_bag_check."
+        },
+        "security_lanes_per_gate": {
+          "estimate": "4-6",
+          "confidence": "low",
+          "notes": "Represents badge scan/registration desk lanes per lobby access point, not security magnetometer lanes. Convention entry is badge scanning (RFID/NFC), not TSA-style security screening."
+        },
+        "parking_capacity": {
+          "value": 11000,
+          "confidence": "medium",
+          "source": "LVCVA official facility guide",
+          "notes": "Approximately 11,000 spaces across LVCC-controlled surface lots and structured parking."
+        },
+        "exhibit_halls": 4,
+        "meeting_rooms": {
+          "value": 144,
+          "confidence": "medium",
+          "source": "LVCVA official fact sheet (post-2021 expansion)"
+        }
+      },
+      "location": {
+        "lat": 36.1339,
+        "lon": -115.1519,
+        "address": "3150 Paradise Rd, Las Vegas, NV 89109",
+        "corridor": "Paradise Road convention corridor",
+        "transit_access": ["Las Vegas Monorail (Convention Center station)", "RTC Route 108", "Resort Corridor buses"]
+      },
+      "event_types": ["trade_show", "convention", "expo", "conference", "corporate_event"],
+      "operator": "Las Vegas Convention & Visitors Authority (LVCVA)",
+      "opened": 1959,
+      "last_expansion": 2021
+    },
+    {
+      "venue_id": "las_vegas_festival_grounds",
+      "name": "Las Vegas Festival Grounds",
+      "in_app_py": true,
+      "capacity": {
+        "max": 85000,
+        "app_py_value": 85000,
+        "source": "Clark County event permit applications; Route 91 Harvest Festival operational records (2017)",
+        "confidence": "medium",
+        "notes": "Capacity varies significantly by event setup, stage placement, and county permit. 85,000 is consistent with large-festival permit records. Some configurations may allow higher counts with additional county approval. No permanent occupancy rating."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "6-10",
+          "confidence": "low",
+          "notes": "Temporary venue — gate configuration changes per event permit. No permanent gate infrastructure."
+        },
+        "permanent_structures": false,
+        "restroom_facilities": {
+          "confidence": "n/a",
+          "notes": "Portable/temporary only; count varies per event production contract."
+        }
+      },
+      "location": {
+        "lat": 36.1425,
+        "lon": -115.1614,
+        "address": "S Las Vegas Blvd at W Sahara Ave (approximate), Las Vegas, NV 89102",
+        "corridor": "North Strip / Sahara Ave interchange",
+        "transit_access": ["Deuce on the Strip", "Las Vegas Monorail (SLS/Sahara station)"]
+      },
+      "event_types": ["music_festival", "outdoor_concert", "special_event"],
+      "operator": "Clark County (temporary event permits issued to individual promoters)",
+      "notes": "Site of Route 91 Harvest Festival (October 2017 mass shooting). No permanent operator or fixed venue infrastructure. Clark County administers event permits on a case-by-case basis."
+    },
+    {
+      "venue_id": "thomas_mack_center",
+      "name": "Thomas & Mack Center",
+      "in_app_py": true,
+      "capacity": {
+        "max": 19422,
+        "basketball": 18776,
+        "concert": 19422,
+        "app_py_value": 19000,
+        "source": "UNLV Athletics official venue specifications; NCAA tournament hosting records (Round of 64/32 configurations)",
+        "confidence": "high",
+        "notes": "19,422 is the concert maximum per UNLV facility documentation. Basketball configuration 18,776 is the UNLV Runnin' Rebels standard seating. app.py uses 19,000 (rounded — acceptable approximation)."
+      },
+      "infrastructure": {
+        "gates": {
+          "count": 4,
+          "confidence": "medium",
+          "source": "UNLV event operations guides (publicly available on unlvtickets.com)",
+          "notes": "Four primary entry points per UNLV event guides. Security lane count estimated."
+        },
+        "security_lanes_per_gate": {"estimate": "4-5", "confidence": "low"},
+        "parking_capacity": {
+          "value": 6200,
+          "confidence": "medium",
+          "source": "UNLV Parking & Transportation Services documentation",
+          "notes": "Includes Marv Davis Lot and surrounding campus structures. Additional street and remote parking available on event days."
+        }
+      },
+      "location": {
+        "lat": 36.1016,
+        "lon": -115.1399,
+        "address": "4505 S Maryland Pkwy, Las Vegas, NV 89154",
+        "corridor": "UNLV main campus, Maryland Pkwy at Tropicana Ave",
+        "transit_access": ["RTC Route 109 (Maryland Pkwy)", "RTC Route 201 (Tropicana Ave)"]
+      },
+      "event_types": ["basketball", "concert", "boxing", "ncaa_tournament", "rodeo", "special_event"],
+      "operator": "UNLV (Thomas & Mack Center / Cox Pavilion administration)",
+      "opened": 1983
+    },
+    {
+      "venue_id": "mgm_grand_garden_arena",
+      "name": "MGM Grand Garden Arena",
+      "in_app_py": true,
+      "capacity": {
+        "max": 16800,
+        "concert": 16800,
+        "boxing": 16800,
+        "minimum_config": 9000,
+        "app_py_value": 16800,
+        "source": "MGM Resorts International venue specifications; Nevada State Athletic Commission boxing licensing documents",
+        "confidence": "high",
+        "notes": "16,800 is the published maximum capacity. Floor configurations can reduce this to 9,000–12,000 for smaller events. app.py value of 16,800 matches the published maximum."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "4-6",
+          "confidence": "low",
+          "notes": "Accessed through MGM Grand hotel complex. Dedicated arena entry points not separately documented in public records; accessed via main casino floor and dedicated arena lobby."
+        },
+        "security_lanes_per_gate": {"estimate": "4-6", "confidence": "low"},
+        "parking_capacity": {
+          "value": null,
+          "confidence": "n/a",
+          "notes": "Uses MGM Grand hotel self-park garage (~5,000+ spaces) and valet. Monorail directly serves MGM Grand station."
+        }
+      },
+      "location": {
+        "lat": 36.1017,
+        "lon": -115.1700,
+        "address": "3799 Las Vegas Blvd S, Las Vegas, NV 89109",
+        "corridor": "MGM Grand resort complex, Tropicana Ave / Strip intersection",
+        "transit_access": ["Las Vegas Monorail (MGM Grand station — direct)", "Deuce on the Strip", "Free tram from Excalibur/Luxor/Mandalay Bay"]
+      },
+      "event_types": ["boxing", "mma", "concert", "nba", "wrestling", "special_event"],
+      "operator": "MGM Resorts International",
+      "opened": 1993
+    },
+    {
+      "venue_id": "mandalay_bay_events_center",
+      "name": "Mandalay Bay Events Center",
+      "in_app_py": true,
+      "current_name": "Michelob Ultra Arena (since March 2022)",
+      "capacity": {
+        "max": 12000,
+        "arena_config": 12000,
+        "app_py_value": 12000,
+        "source": "MGM Resorts venue documentation; public event permit records",
+        "confidence": "high",
+        "notes": "12,000 is the published arena capacity. This venue was rebranded as Michelob Ultra Arena in March 2022. app.py lists both 'Mandalay Bay Events Center' and 'Michelob Ultra Arena' as separate entries — they are the same physical location. See data_quality_flag."
+      },
+      "data_quality_flag": "WARNING: app.py lists this venue under its former name ('Mandalay Bay Events Center', lat: 36.0901, max_cap: 12,000) AND its current name ('Michelob Ultra Arena', lat: 36.1020, max_cap: 20,000) as separate entries. The Michelob Ultra Arena entry has incorrect coordinates (~1.4 km north of actual location) and an inflated capacity (20,000 vs actual 12,000). Recommend consolidating to a single entry using the current name, correct coordinates (36.0901, -115.1748), and correct capacity (12,000).",
+      "infrastructure": {
+        "gates": {
+          "count_estimate": 4,
+          "confidence": "medium",
+          "notes": "Four primary entry points based on venue floor plans referenced in public event guides (AXS, Ticketmaster venue maps)."
+        },
+        "security_lanes_per_gate": {"estimate": "3-5", "confidence": "low"},
+        "parking_capacity": {
+          "value": null,
+          "notes": "Uses Mandalay Bay hotel garage (~5,000 spaces). Free tram connects Mandalay Bay ↔ Luxor ↔ Excalibur."
+        }
+      },
+      "location": {
+        "lat": 36.0901,
+        "lon": -115.1748,
+        "address": "3950 Las Vegas Blvd S, Las Vegas, NV 89119",
+        "corridor": "South Strip, Mandalay Bay / Luxor resort complex",
+        "transit_access": ["Deuce on the Strip", "Free tram: Excalibur – Luxor – Mandalay Bay"]
+      },
+      "event_types": ["concert", "boxing", "special_event", "sporting_event"],
+      "operator": "MGM Resorts International / ASM Global",
+      "opened": 1999
+    },
+    {
+      "venue_id": "caesars_palace_colosseum",
+      "name": "Caesars Palace Colosseum",
+      "in_app_py": true,
+      "capacity": {
+        "max": 4298,
+        "standard": 4298,
+        "app_py_value": 4300,
+        "source": "Caesars Entertainment official venue specification; Nevada entertainment licensing filings",
+        "confidence": "high",
+        "notes": "4,298 is the fixed-seat capacity per Caesars official documentation. app.py uses 4,300 (rounded — negligible difference). Purpose-built for long-term residencies; not reconfigurable."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": 2,
+          "confidence": "medium",
+          "notes": "Two primary entry lobby areas accessed through Caesars Palace casino floor and Forum Shops corridor per publicly available event arrival guides."
+        },
+        "security_lanes_per_gate": {"estimate": "4-6", "confidence": "low"},
+        "parking_capacity": {
+          "value": null,
+          "notes": "Uses Caesars Palace self-park (~5,000 spaces) and valet. No dedicated Colosseum lot."
+        }
+      },
+      "location": {
+        "lat": 36.1162,
+        "lon": -115.1745,
+        "address": "3570 Las Vegas Blvd S, Las Vegas, NV 89109",
+        "corridor": "Caesars Palace resort complex, mid-Strip",
+        "transit_access": ["Deuce on the Strip", "Las Vegas Monorail (Bally's/Paris station, ~5-min walk)"]
+      },
+      "event_types": ["concert", "residency", "comedy", "special_event"],
+      "operator": "Caesars Entertainment",
+      "opened": 2003,
+      "notes": "Purpose-built for long-term residencies. Notable past residents: Celine Dion, Elton John, Mariah Carey, Rod Stewart."
+    },
+    {
+      "venue_id": "resorts_world_theatre",
+      "name": "Resorts World Theatre",
+      "alternate_names": ["Resorts World Amphitheatre"],
+      "in_app_py": true,
+      "app_py_name": "Resorts World Amphitheatre",
+      "capacity": {
+        "max": 5000,
+        "seated": 5000,
+        "app_py_value": 5000,
+        "source": "Resorts World Las Vegas official press materials; Clark County building permit filings (2019–2021)",
+        "confidence": "medium",
+        "notes": "5,000 is the published indoor theatre capacity per Resorts World press materials. NOTE: app.py names this 'Resorts World Amphitheatre' with outdoor_factor: 0.90, suggesting an outdoor venue. The Resorts World Theatre is indoor. There may be a separate outdoor performance area on the Resorts World property — if so, app.py's entry likely refers to that outdoor space, not the theatre. Capacity for any outdoor area is unverified."
+      },
+      "data_quality_flag": "app.py entry 'Resorts World Amphitheatre' (outdoor_factor: 0.90) likely conflates the indoor Resorts World Theatre with a separate outdoor performance area. Recommend splitting into two distinct entries or confirming which physical space app.py intends to model.",
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "2-4",
+          "confidence": "low",
+          "notes": "Accessed through Resorts World Las Vegas casino complex. Dedicated theatre entry not separately documented in publicly available building records."
+        },
+        "security_lanes_per_gate": {"estimate": "3-5", "confidence": "low"},
+        "parking_capacity": {
+          "value": 6000,
+          "confidence": "medium",
+          "source": "Resorts World Las Vegas press kit (2021 opening)",
+          "notes": "Resorts World has approximately 6,000 spaces across on-site garage structures."
+        }
+      },
+      "location": {
+        "lat": 36.1380,
+        "lon": -115.1529,
+        "address": "3000 Las Vegas Blvd S, Las Vegas, NV 89109",
+        "corridor": "North Strip, former Stardust / Echelon site",
+        "transit_access": ["Deuce on the Strip", "Las Vegas Monorail (SLS/Sahara station, short walk)"]
+      },
+      "event_types": ["concert", "residency", "special_event", "comedy"],
+      "operator": "Genting Group / Resorts World Las Vegas",
+      "opened": 2021
+    },
+    {
+      "venue_id": "las_vegas_motor_speedway",
+      "name": "Las Vegas Motor Speedway",
+      "in_app_py": true,
+      "capacity": {
+        "max": 180000,
+        "grandstand_seats": 80000,
+        "infield_plus_grandstand": 180000,
+        "app_py_value": 180000,
+        "source": "Speedway Motorsports Inc (SMI) official facility documentation; NASCAR venue hosting records",
+        "confidence": "medium",
+        "notes": "80,000 is the grandstand seating capacity per SMI facility specifications. 180,000 total includes infield camping, general admission, and grandstand. app.py value of 180,000 reflects the total including infield. Total capacity figures for motorsport venues are inherently soft — actual attendance varies significantly by event and camping configuration."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "8-12",
+          "confidence": "low",
+          "notes": "Multiple entry gates for grandstand, infield, camping, and pit areas. Exact count not found in publicly available documentation. Estimated from LVMS operational scale and comparable SMI facilities."
+        },
+        "parking_capacity": {
+          "value_estimate": "40000+",
+          "confidence": "low",
+          "notes": "Massive on-site surface parking; exact capacity varies by event configuration and infield use."
+        }
+      },
+      "location": {
+        "lat": 36.2720,
+        "lon": -115.0146,
+        "address": "7000 Las Vegas Blvd N, Las Vegas, NV 89115",
+        "corridor": "I-15 / Speedway Blvd interchange, North Las Vegas (17 mi from Strip)",
+        "transit_access": ["LVMS event shuttles from Strip hotels (event days only)", "No regular RTC bus service"]
+      },
+      "event_types": ["nascar", "indycar", "nhra_drag", "motocross", "concert", "special_event"],
+      "operator": "Speedway Motorsports Inc (SMI)",
+      "opened": 1996
+    },
+    {
+      "venue_id": "michelob_ultra_arena",
+      "name": "Michelob Ultra Arena",
+      "former_name": "Mandalay Bay Events Center",
+      "renamed": "March 2022",
+      "in_app_py": true,
+      "capacity": {
+        "max": 12000,
+        "app_py_value": 20000,
+        "source": "MGM Resorts venue documentation; Michelob Ultra Arena official venue listing",
+        "confidence": "high",
+        "notes": "Actual capacity is ~12,000. app.py lists 20,000 — this is incorrect. Michelob Ultra Arena IS the renamed Mandalay Bay Events Center (same physical building, 12,000-seat arena). Additionally, the coordinates in app.py for this entry (36.1020, -115.1720) place the venue ~1.4 km north of its actual location near MGM Grand — not at Mandalay Bay. Both the capacity and coordinates in the app.py entry are erroneous."
+      },
+      "data_quality_flag": "CRITICAL DATA ERROR in app.py: 'Michelob Ultra Arena' entry has (1) capacity of 20,000 vs actual 12,000, and (2) coordinates 36.1020, -115.1720 that are ~1.4 km north of the actual venue. This venue is identical to 'Mandalay Bay Events Center' listed separately in app.py. Recommend removing this duplicate entry and updating 'Mandalay Bay Events Center' to use the current name 'Michelob Ultra Arena' with correct capacity (12,000) and coordinates (36.0901, -115.1748).",
+      "location": {
+        "lat_correct": 36.0901,
+        "lon_correct": -115.1748,
+        "lat_in_app_py": 36.1020,
+        "lon_in_app_py": -115.1720,
+        "address": "3950 Las Vegas Blvd S, Las Vegas, NV 89119",
+        "corridor": "South Strip, Mandalay Bay resort complex",
+        "transit_access": ["Deuce on the Strip", "Free tram: Excalibur – Luxor – Mandalay Bay"]
+      },
+      "event_types": ["concert", "boxing", "special_event", "sporting_event"],
+      "operator": "MGM Resorts International / ASM Global",
+      "notes": "See mandalay_bay_events_center — this is the same physical venue under its current name."
+    },
+    {
+      "venue_id": "dolby_live_park_mgm",
+      "name": "Dolby Live at Park MGM",
+      "alternate_names": ["Park Theater"],
+      "in_app_py": false,
+      "capacity": {
+        "max": 5200,
+        "seated": 5200,
+        "source": "MGM Resorts venue specifications; Live Nation venue listing; Nevada entertainment licensing",
+        "confidence": "high",
+        "notes": "5,200 is the published seated capacity per MGM Resorts and Live Nation official listings. Rebranded from 'Park Theater' to 'Dolby Live at Park MGM' in 2022 following a naming rights agreement with Dolby Laboratories. Some floor configurations allow additional standing room (~800)."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "2-3",
+          "confidence": "low",
+          "notes": "Accessed through Park MGM hotel. Dedicated theatre entry not separately documented in publicly available records."
+        },
+        "security_lanes_per_gate": {"estimate": "3-5", "confidence": "low"},
+        "parking_capacity": {
+          "value": null,
+          "notes": "Uses Park MGM hotel garage and adjacent Monte Carlo/New York-New York structures. T-Mobile Arena shares the same parking supply — conflicts on concurrent event nights."
+        }
+      },
+      "location": {
+        "lat": 36.1027,
+        "lon": -115.1734,
+        "address": "3770 Las Vegas Blvd S, Las Vegas, NV 89109",
+        "corridor": "Park MGM resort, adjacent to T-Mobile Arena / The Park",
+        "transit_access": ["Deuce on the Strip", "Las Vegas Monorail (MGM Grand station, ~5-min walk)", "Walking from T-Mobile Arena / NYNY"]
+      },
+      "event_types": ["concert", "residency", "comedy", "special_event"],
+      "operator": "MGM Resorts International / Live Nation",
+      "opened": 2016,
+      "rebranded": "2022",
+      "notes": "Adjacent to T-Mobile Arena — simultaneous events at both venues create significant combined egress and parking demand."
+    },
+    {
+      "venue_id": "encore_theater",
+      "name": "Encore Theater",
+      "alternate_names": ["Wynn/Encore Theater"],
+      "in_app_py": false,
+      "capacity": {
+        "max": 1630,
+        "seated": 1630,
+        "source": "Wynn Las Vegas venue specifications; Nevada entertainment licensing filings; consistent across multiple booking agency listings",
+        "confidence": "medium",
+        "notes": "1,630 is the consistently reported capacity across press materials and booking agencies. Wynn has not published a single authoritative public spec document; this figure is derived from multiple consistent secondary sources. Venue is purpose-built for intimate residencies."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "1-2",
+          "confidence": "low",
+          "notes": "Small intimate theatre inside Encore hotel. Single main entry accessed through Encore casino floor."
+        },
+        "security_lanes_per_gate": {"estimate": "2-4", "confidence": "low"},
+        "parking_capacity": {
+          "value": null,
+          "notes": "Uses Wynn / Encore hotel self-park and valet (~2,000+ spaces)."
+        }
+      },
+      "location": {
+        "lat": 36.1259,
+        "lon": -115.1703,
+        "address": "3131 Las Vegas Blvd S, Las Vegas, NV 89109",
+        "corridor": "Wynn Las Vegas resort complex, mid-north Strip",
+        "transit_access": ["Deuce on the Strip", "Las Vegas Monorail (Convention Center station, ~10-min walk)"]
+      },
+      "event_types": ["concert", "residency", "comedy", "special_event"],
+      "operator": "Wynn Resorts",
+      "opened": 2008
+    },
+    {
+      "venue_id": "venetian_expo",
+      "name": "The Venetian Expo",
+      "alternate_names": ["Sands Expo Convention Center", "Venetian Convention Center"],
+      "in_app_py": false,
+      "capacity": {
+        "max": 100000,
+        "exhibit_floor_sqft": 2250000,
+        "configuration_note": "Not a fixed-seat venue; 100,000 reflects maximum convention attendance estimates for large-scale events",
+        "source": "Las Vegas Sands Corp venue specifications (pre-2021 sale); LVCVA facility comparison guides",
+        "confidence": "medium",
+        "notes": "2.25 million sq ft of total convention space per official documentation. Maximum attendee figures are event-dependent and not a code capacity. Rebranded from 'Sands Expo Convention Center' to 'The Venetian Expo' in 2023."
+      },
+      "infrastructure": {
+        "gates": {
+          "confidence": "n/a",
+          "notes": "Convention center format with multiple lobby entry points. Not gated in the arena sense. Primary access through Venetian/Palazzo hotel complex and direct Sands Ave entrance."
+        },
+        "parking_capacity": {
+          "value": 8000,
+          "confidence": "medium",
+          "source": "Venetian/Palazzo parking garage specifications",
+          "notes": "Venetian/Palazzo self-park structures total approximately 8,000 spaces."
+        },
+        "exhibit_halls": {"estimate": "multiple", "total_sqft": 2250000}
+      },
+      "location": {
+        "lat": 36.1213,
+        "lon": -115.1694,
+        "address": "3355 Las Vegas Blvd S, Las Vegas, NV 89109",
+        "corridor": "Venetian/Palazzo resort complex, mid-Strip",
+        "transit_access": ["Deuce on the Strip (Venetian/Palazzo stop)", "Las Vegas Monorail (Convention Center station)", "Walking: ~8 min from Sphere Las Vegas"]
+      },
+      "event_types": ["trade_show", "convention", "expo", "conference", "corporate_event"],
+      "operator": "VICI Properties / Apollo Global Management (acquired Las Vegas Sands portfolio 2021)",
+      "notes": "Co-located with The Venetian and Palazzo hotels. Sphere Las Vegas is directly across Sands Ave. Formerly Sands Expo Convention Center (operated by Las Vegas Sands Corp prior to 2021 sale)."
+    },
+    {
+      "venue_id": "theater_at_virgin_hotels",
+      "name": "The Theater at Virgin Hotels Las Vegas",
+      "alternate_names": ["The Joint", "The Joint at Hard Rock Hotel"],
+      "in_app_py": false,
+      "capacity": {
+        "max": 4000,
+        "seated": 4000,
+        "source": "Virgin Hotels Las Vegas official venue page; Nevada entertainment licensing records",
+        "confidence": "medium",
+        "notes": "4,000 is the published capacity per Virgin Hotels Las Vegas venue specifications. Some sources cite up to 4,500 — using 4,000 per official Virgin Hotels listing. Formerly 'The Joint' at Hard Rock Hotel Las Vegas (same building, same approximate capacity). Venue reopened under Virgin Hotels branding in 2021."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": "2-3",
+          "confidence": "low",
+          "notes": "Accessed through Virgin Hotels Las Vegas casino on Paradise Rd (off-Strip property). Entry configuration not comprehensively documented in public records."
+        },
+        "security_lanes_per_gate": {"estimate": "3-5", "confidence": "low"},
+        "parking_capacity": {
+          "value": 2000,
+          "confidence": "low",
+          "notes": "Estimated from property site footprint. Virgin Hotels Las Vegas has a self-park garage; exact space count not publicly confirmed."
+        }
+      },
+      "location": {
+        "lat": 36.1056,
+        "lon": -115.1541,
+        "address": "4455 Paradise Rd, Las Vegas, NV 89169",
+        "corridor": "Paradise Road, ~0.5 mi east of Strip at Harmon Ave",
+        "transit_access": ["RTC Route 108 (Paradise Rd)", "Rideshare from Strip (~5 min)"]
+      },
+      "event_types": ["concert", "residency", "comedy", "special_event"],
+      "operator": "Virgin Hotels Las Vegas / Mohegan Sun (management agreement)",
+      "opened_as_virgin": 2021,
+      "former_name": "The Joint at Hard Rock Hotel Las Vegas"
+    },
+    {
+      "venue_id": "orleans_arena",
+      "name": "Orleans Arena",
+      "in_app_py": false,
+      "capacity": {
+        "max": 9500,
+        "hockey": 7500,
+        "concert": 9500,
+        "basketball": 8500,
+        "source": "Boyd Gaming / ASM Global venue specifications; ECHL league arena documentation (Las Vegas Wranglers historical records)",
+        "confidence": "high",
+        "notes": "9,500 is the published maximum capacity per Orleans Arena official specifications. ECHL Las Vegas Wranglers historically configured at ~7,500 for hockey. Capacity confirmed across multiple consistent official and secondary sources."
+      },
+      "infrastructure": {
+        "gates": {
+          "count_estimate": 4,
+          "confidence": "low",
+          "notes": "Four entry points estimated from venue footprint and publicly available AXS/Ticketmaster event arrival guides. Not independently verified from building plans."
+        },
+        "security_lanes_per_gate": {"estimate": "3-4", "confidence": "low"},
+        "parking_capacity": {
+          "value": 8000,
+          "confidence": "medium",
+          "source": "Orleans Hotel & Casino official facility documentation",
+          "notes": "Orleans Hotel has approximately 8,000 spaces across multiple on-site structures and surface lots — one of the largest hotel parking footprints in Las Vegas."
+        }
+      },
+      "location": {
+        "lat": 36.0989,
+        "lon": -115.2083,
+        "address": "4500 W Tropicana Ave, Las Vegas, NV 89103",
+        "corridor": "West Tropicana Ave, approximately 2 mi west of Strip",
+        "transit_access": ["RTC Route 201 (Tropicana Ave)", "Orleans Hotel free shuttle from Strip (seasonal/scheduled)"]
+      },
+      "event_types": ["concert", "hockey", "basketball", "boxing", "indoor_football", "college_basketball", "special_event"],
+      "operator": "Boyd Gaming / ASM Global",
+      "opened": 2003
+    }
+  ]
+}

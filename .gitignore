@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Claude
+.claude/
+
+# Cached API responses
+data/cache/
+
+# Node / Frontend
+web/node_modules/
+web/dist/
+
+# Local scratch / process output (never committed)
+_audit_report.json
+_uvicorn.out
+_uvicorn.err
+_vite.out
+_chat_test.json
+_sim.json
+_audit_probe.py
+_audit_deep.py
+_audit_final.py
+_erlang_verify.py
+
+# Local env overrides
+.env.local
+.env.production

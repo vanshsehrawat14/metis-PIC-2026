@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "data_source": "Open-Meteo ERA5 archive, Las Vegas NV 2023-2024 (17544 hourly records)",
+  "model": "RandomForestRegressor(n_estimators=200, max_depth=8)",
+  "r2_score": 0.9973,
+  "engine_coefficients": {
+    "weather_capacity_penalty": 0.1,
+    "weather_demand_boost": 0.05,
+    "transit_throughput_penalty": 0.38,
+    "breakdown_wait_exponent": 90.0,
+    "hes_weather_weight": 12.0
+  },
+  "vegas_modifiers": {
+    "f1_demand_uplift": 1.402,
+    "f1_traffic_factor": 1.346,
+    "summer_peak_temp_c": 40.4,
+    "annual_precip_mean_mm_hr": 0.02
+  },
+  "feature_importances": {
+    "temp_c": 0.0,
+    "temp_f": 0.0,
+    "precip_mm": 0.0021,
+    "windspeed_kph": 0.0,
+    "weathercode": 0.0007,
+    "weather_risk": 0.0001,
+    "hour_sin": 0.4078,
+    "hour_cos": 0.5167,
+    "month_sin": 0.0,
+    "month_cos": 0.0,
+    "is_weekend": 0.0596,
+    "is_f1_weekend": 0.0056,
+    "is_holiday": 0.0012,
+    "is_major_event": 0.006
+  }
+}
